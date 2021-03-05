@@ -9,12 +9,12 @@
 
 using namespace std;
 
-void gen_dates(int[], int[], int[], int);
-void search_date(int[], int[], int, int, int);
+void gen_dates(int[], int[], int[], int);						//Date generator prototype
+void search_date(int[], int[], int, int, int);						//Date search prototype
 
 int main()
 {
-	int months[50];
+	int months[50];									//Declaration of arrays/vars
 	int days[50];
 	int num_of_days[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	int user_month;
@@ -22,32 +22,32 @@ int main()
 	int user_year;
 	int user_size;
 	char slash;
-	srand(time(NULL));
+	srand(time(NULL));								//srand for rng to be used in Date generator function
 
-	cout << "Enter number of dates to generate: ";
+	cout << "Enter number of dates to generate: ";					//Receive user input
 	cin >> user_size;
 
-	cout << "Enter current year: ";
+	cout << "Enter current year: ";							//Receive user input
 	cin >> user_year;
 
 	if ((user_year % 400 == 0) || ((user_year % 4 == 0) && (user_year % 100 != 0)))
 	{
-		num_of_days[1] = 29;
+		num_of_days[1] = 29;							//Account for leap years
 	}
 
-	gen_dates(months, days, num_of_days, user_size);
+	gen_dates(months, days, num_of_days, user_size);				//Call Date generator function
 
-	cout << "Enter date to search for: ";
+	cout << "Enter date to search for: ";						//Receive user input
 	cin >> user_month >> slash >> user_day;
 
-	search_date(months, days, user_size, user_month, user_day);
+	search_date(months, days, user_size, user_month, user_day);			//Call Date search function
 
 	system("pause");
 
 	return 0;
 }
 
-void gen_dates(int months[], int days[], int num_of_days[], int user_size)
+void gen_dates(int months[], int days[], int num_of_days[], int user_size)		//Date generator definition
 {
 	cout << "Generated dates: ";
 	
@@ -66,7 +66,7 @@ void gen_dates(int months[], int days[], int num_of_days[], int user_size)
 	}
 }
 
-void search_date(int months[], int days[], int user_size, int user_month, int user_day)
+void search_date(int months[], int days[], int user_size, int user_month, int user_day)	//Date search definition
 {
 	int index = -1;
 
